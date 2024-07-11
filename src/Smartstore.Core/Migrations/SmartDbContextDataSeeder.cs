@@ -253,6 +253,10 @@ namespace Smartstore.Core.Data.Migrations
             builder.AddOrUpdate("ShoppingCart.EditCart", "Edit cart", "Warenkorb bearbeiten");
             builder.AddOrUpdate("ShoppingCart.Totals.ShippingWithinCountry", "Shipping within {0}", "Lieferung innerhalb {0}");
 
+            builder.AddOrUpdate("ShoppingCart.NotAvailableVariant",
+                "The selected product variant is not available.",
+                "Die gewählte Produktvariante ist nicht verfügbar.");
+
             builder.AddOrUpdate("Checkout.ConfirmHint",
                 "Please verify the order total and the specifics regarding the billing address and, if required, the shipping address. You can make corrections to your entry anytime by clicking on <strong>Change</strong>. If everything is as it should be, submit your order to us by clicking <strong>Confirm</strong>.",
                 "Bitte prüfen Sie die Gesamtsumme und die Rechnungsadresse. Bei abweichender Lieferanschrift prüfen Sie bitte auch diese. Änderungen können Sie jederzeit mit einem Klick auf <strong>Ändern</strong> vornehmen. Sind alle Daten richtig, bestätigen Sie bitte mit einem Klick auf <strong>Kaufen</strong> Ihre Bestellung.");
@@ -379,6 +383,13 @@ namespace Smartstore.Core.Data.Migrations
             builder.AddOrUpdate("Admin.Customers.Customers.Fields.IPAddress.Hint",
                 "IP address of last visit",
                 "IP-Adresse, mit der der Kunde zuletzt im Shop aktiv war.");
+
+            builder.AddOrUpdate("Admin.DataExchange.Export.CompletedEmailAddresses", "Recipients e-mail addresses", "Empfänger E-Mail Adressen");
+            builder.AddOrUpdate("Admin.DataExchange.Export.Deployment.EmailAddresses", "Recipients e-mail addresses", "Empfänger E-Mail Adressen");
+
+            builder.AddOrUpdate("Admin.DataExchange.Export.FileNamePatternDescriptions",
+                "ID of export profil;Folder name of export profil;SEO name of export profil;Store ID;SEO name of store;One based file index;Random number;UTC timestamp;Date and time",
+                "ID des Exportprofils;Ordername des Exportprofils;SEO Name des Exportprofils;Shop ID;SEO Name des Shops;Mit 1 beginnender Dateiindex;Zufallszahl;UTC Zeitstempel;Datum und Uhrzeit");
 
             AddAIResources(builder);
         }
@@ -542,6 +553,10 @@ namespace Smartstore.Core.Data.Migrations
             builder.AddOrUpdate("Smartstore.AI.Prompts.Role.ProductExpert",
                 "Be an expert for the product: '{0}'.",
                 "Sei ein Experte für das Produkt: '{0}'.");
+
+            builder.AddOrUpdate("Admin.Orders.List.GoDirectlyToNumber",
+                "Search by order number or order reference number",
+                "Nach Auftrags- oder Bestellreferenznummer suchen");
         }
     }
 }

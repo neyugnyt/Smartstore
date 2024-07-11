@@ -22,8 +22,12 @@ namespace Smartstore.Admin.Components
                 return Empty();
             }
 
+            var customer = Services.WorkContext.CurrentCustomer;
+            var authorizedStoreIds = await Services.StoreMappingService.GetAuthorizedStoreIdsAsync("Customer", customer.Id);
+
             var model = new DashboardLatestOrdersModel();
             var latestOrders = await _db.Orders
+                .ApplyCustomerFilter(authorizedStoreIds)
                 .AsNoTracking()
                 .AsSplitQuery()
                 .Include(x => x.Customer)
@@ -41,8 +45,9 @@ namespace Smartstore.Admin.Components
                 model.LatestOrders.Add(
                     new DashboardOrderModel
                     {
+                        OrderNumber = order.OrderNumber.NullEmpty() ?? order.Id.ToString(),
                         CustomerId = order.CustomerId,
-                        CustomerDisplayName = order.Customer.FindEmail() ?? order.Customer.FormatUserName(),
+                        CustomerDisplayName = order.Customer.GetFullName().NullEmpty() ?? order.Customer.FindEmail(),
                         ProductsTotal = order.OrderItems.Sum(x => x.Quantity),
                         TotalAmount = Services.CurrencyService.CreateMoney(order.OrderTotal, primaryCurrency),
                         Created = _dateTimeHelper.ConvertToUserTime(order.CreatedOnUtc, DateTimeKind.Utc).ToString("g"),

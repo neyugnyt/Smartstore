@@ -24,10 +24,13 @@
 - **Grouped product enhancements**
   - Optional presentation of associated products as collapsible/expandable panels.
   - Added paging for associated products.
+- **Pixlr image editing** plugin (commercial)
+  - Create and edit images directly in the Media Manager.
 - Updated to **.NET 8**
   - Faster app startup
   - Increased overall performance
   - ~10 % less memory usage after app start
+- Toggle password visibility
 - New app setting for MS SQL Server compatibility level
 - Enhanced database optimization and vacuum operations
 - Vacuum single database table
@@ -46,12 +49,14 @@
 - #858 Implemented Paypal package tracking
 - #997 Added setting to disable display of product tags on the product detail page  
 - #1100 Display customer generic attributes in backend
+- #1129: Extend the PrivacySettings CookieConsentRequirement option to include Switzerland when choosing the option RequiredInEUCountriesOnly
 
 ### Improvements
 
 - #876 Changing password in backend via modal dialog.
 - #871 Show the total media file size in dashboard stats.
 - Theming
+  - Revamped SignIn / Register page
   - Revamped dashboard stats
   - Activate .spa-layout only on screen height > 600px (DataGrid is unusable in mobile landscape mode otherwise)
 - Page Builder
@@ -71,6 +76,7 @@
   - Export *out of stock* if inventory management and the buy button are deactivated.
 - #912 Add a setting to use the `CultureInfo.NativeName` in language selector instead of the language name maintained in backend.
 - #968 Allow to specify a language in which the notification is to be sent for manually created gift cards.
+- #1115 Use atomic transaction in PlaceOrder (save all or nothing)
 - Added meta properties name and uploadDate for videos
 - (DEV) Database migrations: Long running data seeders can now be run during the request stage to overcome app startup timeout issues.
 - #965 Prevent adding of products to the shopping cart by system customers such as *builtin@search-engine-record.com*.
@@ -83,6 +89,7 @@
 - Added deletion of selected rows to the data grid of manufacturers, discounts, menus and topics.
 - ActivityLogger: don't log activities from system accounts (bots, scheduler, etc.).
 - Identity: Moved `ClientIdent` and `LastViditedPage` from `GenericAttribute` to `Customer` table (for performance reasons and to distress GenericAttribute table)
+- Enable tokens (e.g. current date and time) for email subject in email export deployments.
 
 ### Bugfixes
 
@@ -102,7 +109,9 @@
 - Fixed `NullReferenceException` calling search page without any search term.
 - Fixed `NullReferenceException` *typeFilter was null* when uploading a video.
 - Fixed `NullReferenceException` on product detail page if the main menu is not published.
-- MegaSearch: hits from an SKU search tend to appear too far back.
+- MegaSearch: 
+  - Fixed missing search filters for specification attribute options with numeric values.
+  - Hits from an SKU search tend to appear too far back.
 - Tax by region: fixed tax rate was not applied if asterisk placeholder character was saved for zip code.
 - #921 IOException "The filename, directory name, or volume label syntax is incorrect" when `MediaSettings.AppendFileVersionToUrl` is activated.
 - #922 Newsletter subscription event not triggered upon email confirmation.
@@ -125,7 +134,7 @@
 - #1072 Missing customer welcome message after approval of the registration by admin.
 - #897 Discount code input seems to be confirmed (border color and check icon)
 - #964 Removed meta information from publication according to catalog settings.
-- Fixed shoping cart MinOrderValidation 
+- Fixed shoping cart `MinOrderValidation`.
 - Added quantity information on non-editable wishlist page.
 - Some external authentication methods (like AmazonPay) were not displayed on customer pages.
 - Hitting the return key in the text field of a product variant resulted in a 404 status error.
@@ -144,7 +153,9 @@
 - Hide the cookie manager for topics that need to be fully visible without being overlayed by the cookie manager dialog.
 - #1091 Allow recursive cache access in `AlbumRegistry.GetAlbumDictionary()`
 - #1088 Special characters (like Umlaut) are not displayed correctly in client-side messages.
-- PayPal: Fixed VAT exempt & currency conversion problems
+- PayPal: Fixed VAT exempt & currency conversion problems.
+- Files from subfolders must not be attached to an e-mail when deploying an export (can be thousands).
+- #1136 Datagrid Vue component throws when expanding child grid
 
 
 ## Smartstore 5.1.0

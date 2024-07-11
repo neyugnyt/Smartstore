@@ -289,6 +289,7 @@ jQuery(function () {
         $('.more-less').moreLess();
     }
 
+    // Toggle grouped buttons
     $(document).on('mouseup', '.btn-group-toggle.unselectable > .btn', function (e) {
         let btn = $(this);
         let radio = btn.find('input:radio');
@@ -415,6 +416,17 @@ jQuery(function () {
 
         win.on("scroll", throttledScroll);
     })();
+
+    // Toggle password visibility
+    $(document).on('click', '.btn-toggle-pwd', function () {
+        const input = $(this).prev('.form-control')[0];
+        if (input?.type == 'text') {
+            input.type = 'password';
+        }
+        else if (input?.type == 'password') {
+            input.type = 'text';
+        }
+    });
 
     // Modal stuff
     $(document).on('hide.bs.modal', '.modal', function (e) { body.addClass('modal-hiding'); });

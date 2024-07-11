@@ -33,7 +33,7 @@
             else
             {
                 <span class="form-control-plaintext">
-                    @Model.Username
+                    @Model.Username.NaIfEmpty()
                 </span>
                 <input type="hidden" asp-for="Username" />
             }
@@ -269,6 +269,15 @@
         <div class="adminData">
             <editor asp-for="AdminComment" />
             <span asp-validation-for="AdminComment"></span>
+        </div>
+    </div>
+    <div class="adminRow">
+        <div class="adminTitle">
+            <smart-label asp-for="SelectedStoreIds" />
+        </div>
+        <div class="adminData">
+            <editor asp-for="SelectedStoreIds" />
+            <span asp-validation-for="SelectedStoreIds"></span>
         </div>
     </div>
     <div class="adminRow">
