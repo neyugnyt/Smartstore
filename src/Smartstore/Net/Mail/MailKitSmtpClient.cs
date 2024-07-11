@@ -45,7 +45,7 @@ namespace Smartstore.Net.Mail
         {
             try
             {
-                await _client.ConnectAsync(Account.Host, Account.Port, (SecureSocketOptions)Account.MailSecureOption);
+                await _client.ConnectAsync(Account.Host, Account.Port, SecureSocketOptions.StartTls);
 
                 if (Account.UseDefaultCredentials)
                 {
