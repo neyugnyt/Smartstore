@@ -32,12 +32,6 @@ A comprehensive set of tools for CRM & CMS, Sales, Marketing, Payment & Shipping
 
 The state-of-the-art architecture of Smartstore - with `ASP.NET Core 7`, `Entity Framework Core 7` and Domain Driven Design approach - makes it easy to extend, extremely flexible and basically fun to work with ;-)
 
-* :house: **Website:** [http://www.smartstore.com](http://www.smartstore.com)
-* :speech_balloon: **Forum:** [http://community.smartstore.com](http://community.smartstore.com)
-* :mega: **Marketplace:** [http://community.smartstore.com/marketplace](http://community.smartstore.com/marketplace)
-* :earth_americas: **Translations:** [http://translate.smartstore.com/](http://translate.smartstore.com/)
-* :blue_book: **Documentation:** [Smartstore Documentation in English](https://smartstore.atlassian.net/wiki/spaces/SMNET50/pages/1956118583/Getting+Started)
-* ▶️ **Azure Marketplace:** [https://azuremarketplace.microsoft.com](https://azuremarketplace.microsoft.com/marketplace/apps/smartstore-ag.smartstorenet?tab=Overview)
 <p>&nbsp;</p>
 
 ## Technology & Design
@@ -111,11 +105,6 @@ The state-of-the-art architecture of Smartstore - with `ASP.NET Core 7`, `Entity
 - PostgreSQL 11+
 - SQLite 3.31+
 
-### Upgrade from Smartstore.NET 4.2
-
-Smartstore 5 is a port of [Smartstore.NET 4](https://github.com/smartstore/SmartStoreNET) - based on the classic .NET Framework 4.7.2 – to the new `ASP.NET Core 7` platform. Smartstore instances based on classic `ASP.NET MVC` can be upgraded seamlessly. To [upgrade](https://smartstore.atlassian.net/wiki/spaces/SMNET50/pages/1956118609/Updating+from+Previous+Versions), all you need to do is replace the application files on your server - except for the `App_Data` directory - and **all your data will automatically be transferred to the new system**. [See the documentation for detailed information on installing or upgrading your store](https://smartstore.atlassian.net/wiki/spaces/SMNET50/pages/1956118822/Installing+Smartstore).
-
- :information_source: Upgrading from versions older than 4.2 is not possible. Therefore, you should migrate Smartstore.NET to version 4.2 first and then upgrade to Smartstore 5.
 
 ### Visual Studio
 
